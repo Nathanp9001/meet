@@ -47,7 +47,7 @@ module.exports.getAccessToken = async (event) => {
     redirect_uris[0]
   );
   
-  const code = decodeURIComponent(`${event.pathParameters.Code}`);
+  const code = decodeURIComponent(`${event.pathParameters.code}`);
 
   return new Promise((resolve, reject) => {
   
@@ -64,6 +64,7 @@ module.exports.getAccessToken = async (event) => {
         headers: {
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Credentials": true,
+          "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
         },
         body: JSON.stringify(token),
       };
@@ -72,6 +73,9 @@ module.exports.getAccessToken = async (event) => {
       console.error(err);
       return{
         statusCode: 500,
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        },
         body: JSON.stringify(err),
       };
     });
