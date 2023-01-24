@@ -24,11 +24,9 @@ functions:
       - http:
           path: api/get-auth-url
           method: get
-          cors: true
   getAccessToken:
     handler: handler.getAccessToken
     events:
       - http:
-        path: api/token/{code}
-        method: get
-        cors: true
+          path: api/token/{code}
+          method: get
