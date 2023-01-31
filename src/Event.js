@@ -6,7 +6,9 @@ class Event extends Component {
 
     return(
     <div className="event">
-      <h3 className="summary">{ event.summary }</h3>
+      <p className="summary">{ event.summary }</p>
+      <p className="start">{ event.start.dateTime }</p>
+      <p className="location">{ event.location }</p>
     </div>
     );
   }

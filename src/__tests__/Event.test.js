@@ -17,10 +17,24 @@ describe('<Event /> component', () => {
   });
 
   test('<Event /> summary is rendered correctly', () => {
-    const summary = EventWrapper.find('h3.summary')
+    const summary = EventWrapper.find('p.summary')
     const summaryString = event.summary;
     expect(summary).toBeDefined();
     expect(summary.text()).toBe(summaryString);
+  });
+
+  test('<Event /> start time is rendered correctly', () => {
+    const eventStart = EventWrapper.find('p.start')
+    const dateString = event.start.dateTime;
+    expect(eventStart).toBeDefined();
+    expect(eventStart.text()).toBe(dateString);
+  });
+
+  test('<Event /> location is rendered correctly', () => {
+    const eventLocation = EventWrapper.find('p.location')
+    const locationString = event.location;
+    expect(eventLocation).toBeDefined();
+    expect(eventLocation.text()).toBe(locationString);
   });
   
 });
