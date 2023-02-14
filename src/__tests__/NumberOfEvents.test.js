@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { NumberOfEvents } from '../NumberOfEvents';
+import NumberOfEvents from '../NumberOfEvents.js';
 
 describe('<NumberOfEvents /> component', () => {
 
@@ -9,7 +9,7 @@ describe('<NumberOfEvents /> component', () => {
     NumberOfEventsWrapper = shallow(<NumberOfEvents />);
   });
 
-  test('render the correct number of events', () => {
-    expect(NumberOfEventsSelector).toBeDefined();
+  test('render correct number of events', () => {
+    expect(NumberOfEventsWrapper).toBeDefined();
   });
 });
