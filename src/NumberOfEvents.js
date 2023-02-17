@@ -23,7 +23,7 @@ class NumberOfEvents extends Component {
         <label>
           Number of events
           <input
-            classNamej='num'
+            className='num'
             type='number'
             value={num}
             onChange={(event) => {

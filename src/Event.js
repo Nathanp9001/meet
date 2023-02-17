@@ -18,7 +18,7 @@ class Event extends Component {
       <p className="start">{ event.start.dateTime }</p>
       <p className="location">{ event.location }</p>
 
-    <button className="details-button" onCLick={this.toggleDetails}>
+    <button className="details-button" onClick={this.toggleDetails}>
       {collapsed ? "show" : "hide"} details
     </button>
 
