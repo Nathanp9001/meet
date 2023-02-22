@@ -11,15 +11,35 @@ class App extends Component {
     events: [],
     locations: [],
     selectedLocation: 'all',
-    eventCount: 10
+    numberOfEvents: 10
   }
 
-  async componentDidMount() {
+  updateEvents = (location, eventCount) => {
+    getEvents().then((events) => {
+      const locationEvents =
+        location === "all"
+          ? events
+          : events.filter((event) => event.location === location);
+      this.setState({
+        events: locationEvents.slice(0, this.state.numberOfEvents),
+      });
+    });
+  };
+
+  updateNumberOfEvents(number) {
+    this.setState({
+      numberOfEvents: number,
+    });
+  }
+
+    async componentDidMount() {
     this.mounted = true;
     getEvents().then(events => {
       if (this.mounted) {
-        events = events.slice(0,this.state.eventCount);
-        this.setState({ events, locations: extractLocations(events) });
+        this.setState({
+          events: events.slice(0, this.state.numberOfEvents),
+          locations: extractLocations(events),
+        });
       }
     });
   }
@@ -28,40 +48,21 @@ class App extends Component {
     this.mounted = false;
   }
 
-  updateEvents = (location, inputNumber) => {
-    const {eventCount, selectedLocation} = this.state;
-    if (location) {
-      getEvents().then(events => {
-        const locationEvents = (location === 'all') ?
-        events :
-        events.filter(event => event.location === location);
-        const eventsToShow=locationEvents.slice(0, eventCount);
-        this.setState({
-          events: eventsToShow,
-          selectedLocation: location
-        });
-      });
-    } else {
-      getEvents().then((events) => {
-        const locationEvents = (selectedLocation === 'all') ?
-        events :
-        events.filter((event) => event.location === selectedLocation);
-        const eventsToShow=locationEvents.slice(0, inputNumber);
-        this.setState({
-          events: eventsToShow,
-          eventCount: inputNumber
-        });
-      });
-    }
-  }
-
-  
   render() {
     return (
       <div className="App">
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-        <NumberOfEvents />
-        <EventList events={this.state.events} />
+        <div className="citySearch">
+          <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+        </div>
+        <div className="numberOfEvents">
+          <NumberOfEvents
+            num={this.state.numberOfEvents}
+            updateNumberOfEvents={(num) => this.updateNumberOfEvents(num)} 
+           />
+        </div>
+        <div className="eventList">
+          <EventList events={this.state.events} />
+        </div>
       </div>
     );
   }
