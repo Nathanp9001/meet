@@ -2,6 +2,8 @@
 .App {
   text-align: center;
   padding: 2% 5%;
+  background-color: whitesmoke;
+
 }
 
 .App * {
@@ -83,9 +85,10 @@ input[type="number"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
+  background-color: white;
 }
 
-.details-btn {
+/* .details-btn {
   position: absolute;
   right: 5px;
   bottom: 5px;
@@ -93,7 +96,7 @@ input[type="number"] {
   border-radius: 4px;
   outline: none;
   cursor: pointer;
-}
+} */
 
 .name {
   font-size: 18px;
@@ -117,7 +120,7 @@ input[type="number"] {
 .numberOfEvents {
   width: 200px;
   margin: 20px auto;
-  text-align: left;
+  text-align: center;
 }
 
 .button-wrapper {

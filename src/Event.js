@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Button } from "react-bootstrap";
+
 
 class Event extends Component {
   state = { collapsed: true };
@@ -18,9 +20,12 @@ class Event extends Component {
       <p className="start">{ event.start.dateTime }</p>
       <p className="location">{ event.location }</p>
 
-    <button className="details-button" onClick={this.toggleDetails}>
+    <Button 
+    className="button-primary" 
+    onClick={this.toggleDetails}
+    >
       {collapsed ? "show" : "hide"} details
-    </button>
+    </Button>
 
     {!collapsed && (
       <div className="details">
