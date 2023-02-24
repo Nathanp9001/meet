@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import './nprogress.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
@@ -23,6 +24,7 @@ class App extends Component {
           : events.filter((event) => event.location === location);
       this.setState({
         events: locationEvents.slice(0, this.state.numberOfEvents),
+        selectedLocation: location
       });
     });
   };
@@ -31,6 +33,7 @@ class App extends Component {
     this.setState({
       numberOfEvents: number,
     });
+    this.updateEvents(this.state.selectedLocation, number);
   }
 
     async componentDidMount() {
