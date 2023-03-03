@@ -2,18 +2,37 @@
 .App {
   text-align: center;
   padding: 2% 5%;
-  background-color: rgb(30, 35, 82);
-
+  background-color: rgb(236, 249, 226);
 }
 
 .App * {
   box-sizing: border-box;
 }
 
-.button-primary {
-  background-color: limegreen;
-  color: limegreen;
-}
+.button-details {
+    background-color: #c2fbd7;
+    border-radius: 100px;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+    color: green;
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    &:hover {
+      color: green;
+      background-color: #c2fbd7;
+      box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+      transform: scale(1.05);
+    }
+  }
 
 ul {
   padding: 0;
@@ -48,6 +67,8 @@ input[type="number"] {
 }
 
 .CitySearch {
+  color: black;
+  font-size: large;
   display: flex;
   flex-direction: column;
   flex-basis: 300px;
@@ -86,7 +107,7 @@ input[type="number"] {
 .event {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
-  text-align: left;
+  text-align: center;
   border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
@@ -113,7 +134,7 @@ input[type="number"] {
 }
 
 .numberOfEvents {
-  color: whitesmoke;
+  color: black;
   font-size: large;
   width: 200px;
   margin: 20px auto;

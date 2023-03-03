@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './nprogress.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import './App.scss';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
+import { Row, Col } from "react-bootstrap";
 
 
 class App extends Component {
@@ -62,11 +63,13 @@ class App extends Component {
           <NumberOfEvents
             num={this.state.numberOfEvents}
             updateNumberOfEvents={(num) => this.updateNumberOfEvents(num)} 
-           />
+          />
         </div>
-        <div className="eventList">
-          <EventList events={this.state.events} />
-        </div>
+        <Row>
+          <Col md={4} className="eventList">
+            <EventList events={this.state.events} />
+          </Col>
+        </Row>
       </div>
     );
   }
