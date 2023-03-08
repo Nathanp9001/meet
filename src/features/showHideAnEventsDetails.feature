@@ -1,7 +1,7 @@
 Feature: Show and hide event details
 
 Scenario: Event details are hidden by default
-Given an event is on the page'
+Given an event is on the page
 When the user performs no actions
 Then the details are hidden
 

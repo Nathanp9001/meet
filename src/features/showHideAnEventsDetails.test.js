@@ -29,7 +29,7 @@ test('User can click a button to view event details', ({ given, when, then }) =>
 
   when('the user clicks the details button', () => {
     AppWrapper.update();
-    AppWrapper.find('.Event .button-details').at(0).simulate('click');
+    AppWrapper.find('.event .button-details').at(0).simulate('click');
   });
 
   then('the user should see the event details', () => {
