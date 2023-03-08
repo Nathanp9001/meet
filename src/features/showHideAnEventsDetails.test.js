@@ -8,7 +8,7 @@ const feature = loadFeature('./src/features/showHideAnEventsDetails.feature');
 defineFeature(feature, test => {
   let AppWrapper;
   test('Event details are hidden by default', ({ given, when, then }) => {
-    given('an event is on the page\'', () => {
+    given('an event is on the page', () => {
 
     });
 
