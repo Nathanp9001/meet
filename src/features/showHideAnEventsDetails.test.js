@@ -33,21 +33,24 @@ test('User can click a button to view event details', ({ given, when, then }) =>
   });
 
   then('the user should see the event details', () => {
-    expect(AppWrapper.find('.Event.show')).toHaveLength(1);
+    expect(AppWrapper.find('.event .details')).toHaveLength(1);
   });
 });
 
 test('User can click a button to hide event details', ({ given, when, then }) => {
-  given('an event\'s details are displayed', () => {
-
+  given('an event\'s details are displayed', async () => {
+    AppWrapper = await mount(<App />);
+    AppWrapper.update();
+    AppWrapper.find('.event .button-details').at(0).simulate('click');
   });
 
   when('the user clicks the details button', () => {
-
+    AppWrapper.update();
+    AppWrapper.find('.event .button-details').at(0).simulate('click');
   });
 
   then('the event\'s details become hidden', () => {
-
+    expect(AppWrapper.find('.event details')).toHaveLength(0);
   });
 });
 });

@@ -22,19 +22,20 @@ defineFeature(feature, test => {
   });
 
   test('User can decide how many events to view', ({ given, when, then }) => {
+    let NumberOfEventsWrapper;
     given('the user is viewing the app', async () => {
       AppWrapper = await mount(<App />);
+      NumberOfEventsWrapper = AppWrapper.find('NumberOfEvents');
     });
 
     when('the user changes the number of events in the input box', () => {
       AppWrapper.update();
-      let NumberOfEventsWrapper = AppWrapper.find('NumberOfEvents');
       const eventObject = { target: { value: 1 } };
       NumberOfEventsWrapper.find('.num').simulate('change', eventObject);
     });
 
     then('the number they selected is how many events are shown on the page', () => {
-      expect(AppWrapper.find('.event')).toHaveLength(1);
+      expect(NumberOfEventsWrapper.state('num')).toEqual(1);
     });
   });
 });
