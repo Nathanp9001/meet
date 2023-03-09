@@ -65,11 +65,11 @@ class App extends Component {
             updateNumberOfEvents={(num) => this.updateNumberOfEvents(num)} 
           />
         </div>
-        <Row>
-          <Col md={4} className="eventList">
+        <div>
+          <div className="eventList">
             <EventList events={this.state.events} />
-          </Col>
-        </Row>
+          </div>
+        </div>
       </div>
     );
   }
