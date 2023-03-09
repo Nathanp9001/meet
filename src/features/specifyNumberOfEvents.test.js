@@ -7,7 +7,7 @@ const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
 
 defineFeature(feature, test => {
     let AppWrapper;
-    test('Ten events are shown by default', ({ given, when, then }) => {
+    test('Thirty events are shown by default', ({ given, when, then }) => {
       given('the user is viewing the app', () => {
 
       });
@@ -16,8 +16,8 @@ defineFeature(feature, test => {
         AppWrapper = mount(<App />);
       });
 
-      then('Ten events are shown on the page', () => {
-        expect(AppWrapper.state('numberOfEvents')).toEqual(10);
+      then('Thirty events are shown on the page', () => {
+        expect(AppWrapper.state('numberOfEvents')).toEqual(30);
       });
   });
 

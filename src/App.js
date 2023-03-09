@@ -14,7 +14,7 @@ class App extends Component {
     events: [],
     locations: [],
     selectedLocation: 'all',
-    numberOfEvents: 10
+    numberOfEvents: 30
   }
 
   updateEvents = (location, eventCount) => {
