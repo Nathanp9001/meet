@@ -7,6 +7,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
 import { Row, Col } from "react-bootstrap";
+import { OfflineAlert } from './Alert';
 
 
 class App extends Component {
@@ -54,8 +55,15 @@ class App extends Component {
   }
 
   render() {
+    const offlineMessage = navigator.onLine
+    ?""
+    : "Meet is offline and will update next time you connect";
+
     return (
       <div className="App">
+        <div className="alert-offline">
+          <OfflineAlert message={offlineMessage} />
+        </div>
         <div className="citySearch">
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         </div>
