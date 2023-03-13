@@ -5,15 +5,16 @@ import './App.scss';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import { getEvents, extractLocations } from './api';
-import { Row, Col } from "react-bootstrap";
+import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import { OfflineAlert } from './Alert';
+import WelcomeScreen from './WelcomeScreen';
 
 
 class App extends Component {
   state ={
     events: [],
     locations: [],
+    showWelcomeScreen: undefined,
     selectedLocation: 'all',
     numberOfEvents: 30
   }
@@ -40,14 +41,21 @@ class App extends Component {
 
     async componentDidMount() {
     this.mounted = true;
-    getEvents().then(events => {
-      if (this.mounted) {
-        this.setState({
-          events: events.slice(0, this.state.numberOfEvents),
-          locations: extractLocations(events),
-        });
-      }
-    });
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get("code");
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then(events => {
+        if (this.mounted) {
+          this.setState({
+            events: events.slice(0, this.state.numberOfEvents),
+            locations: extractLocations(events),
+          });
+        }
+      });
+    }
   }
 
   componentWillUnmount(){
@@ -55,7 +63,9 @@ class App extends Component {
   }
 
   render() {
-    const offlineMessage = navigator.onLine
+    if (this.state.showWelcomeScreen === undefined) return <div className="App" />
+
+    const offlineMessage = navigator.online
     ?""
     : "Meet is offline and will update next time you connect";
 
@@ -73,11 +83,11 @@ class App extends Component {
             updateNumberOfEvents={(num) => this.updateNumberOfEvents(num)} 
           />
         </div>
-        <div>
-          <div className="eventList">
-            <EventList events={this.state.events} />
-          </div>
+        <div className="eventList">
+          <EventList events={this.state.events} />
         </div>
+        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+        getAccessToken={() => { getAccessToken() }} />
       </div>
     );
   }
