@@ -39,7 +39,12 @@ handleItemClicked = (suggestion) => {
 }
   render() {
     return (
-      <div className="CitySearch">
+      <div 
+      className="CitySearch"
+      onFocus={() => { this.setState({ showSuggestions: true }) }}
+      onBlur={() => { this.setState({ showSuggestions: false }) }}
+      tabIndex={0}
+      >
         <InfoAlert text={this.state.infoText} />
         <label>
           Search By City
@@ -48,7 +53,6 @@ handleItemClicked = (suggestion) => {
             className="city"
             value={this.state.query}
             onChange={this.handleInputChanged}
-            onFocus={() => { this.setState({ showSuggestions: true }) }}
           />
         </label>
         <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none' }}>
