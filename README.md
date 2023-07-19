@@ -1,6 +1,20 @@
-Meet is an app for users to find what kind of events are happening, where they are happening, and get information about the event.
+# Meet
 
-It is built using React and uses the Google Calendar API and OAuth2 authentication flow.
+- Meet is an app for users to find what kind of events are happening, where they are happening, and get information about the event.
+
+# How to get the project running
+
+- https://nathanp9001.github.io/meet/
+
+# Created with
+
+- React
+- SCSS
+- JavaScript
+
+- also uses the Google Calendar API and OAuth2 authentication flow.
+
+# Features
 
 FEATURE 1: FILTER EVENTS BY CITY
 
